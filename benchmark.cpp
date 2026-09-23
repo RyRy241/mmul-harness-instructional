@@ -96,6 +96,7 @@ int main(int argc, char** argv)
 
            // insert timer code here
            std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
+           
 
 #ifdef BLOCKED
            square_dgemm_blocked(n, b, A, B, C); 
@@ -110,12 +111,18 @@ int main(int argc, char** argv)
            reference_dgemm(n, 1.0 , Acopy, Bcopy, Ccopy);
 
            // compare your C with that computed by BLAS
-           if (check_accuracy(Ccopy, C, n*n) == false)
-              printf(" Error: your answer is not the same as that computed by BLAS. \n");
+           bool ok = check_accuracy(Ccopy, C, n*n);
+
+           double seconds = elapsed.count();
+           double mflops  = (2.0 * n * n * n) / seconds / 1.0e6;
 
 #ifdef BLOCKED
+          printf("N=%d  B=%d  time=%.6f s  %.1f MFLOP/s  %s\n",
+                  n, b, seconds, mflops, ok ? "PASS" : "FAIL");
         } // end loop over block sizes
 #endif
+          printf("N=%d  time=%.6f s  %.1f MFLOP/s  %s\n",
+                  n, seconds, mflops, ok ? "PASS" : "FAIL");
 
     } // end loop over problem sizes
 
