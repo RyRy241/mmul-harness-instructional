@@ -39,7 +39,7 @@ from matplotlib.ticker import ScalarFormatter
 
 # EDIT THIS with your own Perlmutter details before submitting.
 PLATFORM = ("Perlmutter CPU node: AMD EPYC 7763 (Milan), 1 core, "
-            "GCC <version>, -O3 -march=native, median of 3 runs")
+            "GCC 14.3.0, -O3 -march=native, median of 3 runs")
 
 # Theoretical per-core peak, MFLOP/s. Drawn as a dashed reference line and
 # used for the "% of peak" column in the summary.
