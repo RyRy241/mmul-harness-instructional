@@ -1,0 +1,16 @@
+Description:	Basic implementation, three-loop dgemm.
+
+Working on problem size N=64 
+N=64  time=0.000161 s  3255.4 MFLOP/s  PASS
+Working on problem size N=64 
+N=64  time=0.000166 s  3152.6 MFLOP/s  PASS
+Working on problem size N=128 
+N=128  time=0.002562 s  1636.9 MFLOP/s  PASS
+Working on problem size N=256 
+N=256  time=0.029813 s  1125.5 MFLOP/s  PASS
+Working on problem size N=512 
+N=512  time=0.861210 s  311.7 MFLOP/s  PASS
+Working on problem size N=1024 
+N=1024  time=7.517954 s  285.6 MFLOP/s  PASS
+Working on problem size N=2048 
+N=2048  time=138.241858 s  124.3 MFLOP/s  PASS

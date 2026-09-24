@@ -1,0 +1,44 @@
+Description:	Blocked dgemm.
+
+Working on problem size N=64 
+Blocked DGEMM 
+N=64  B=2  time=0.000983 s  533.3 MFLOP/s  PASS
+N=64  B=16  time=0.000059 s  8946.3 MFLOP/s  PASS
+N=64  B=32  time=0.000049 s  10631.2 MFLOP/s  PASS
+N=64  B=64  time=0.000064 s  8208.3 MFLOP/s  PASS
+Working on problem size N=64 
+Blocked DGEMM 
+N=64  B=2  time=0.000910 s  576.2 MFLOP/s  PASS
+N=64  B=16  time=0.000050 s  10471.7 MFLOP/s  PASS
+N=64  B=32  time=0.000036 s  14612.3 MFLOP/s  PASS
+N=64  B=64  time=0.000028 s  18965.7 MFLOP/s  PASS
+Working on problem size N=128 
+Blocked DGEMM 
+N=128  B=2  time=0.006926 s  605.6 MFLOP/s  PASS
+N=128  B=16  time=0.000537 s  7816.8 MFLOP/s  PASS
+N=128  B=32  time=0.000298 s  14077.4 MFLOP/s  PASS
+N=128  B=64  time=0.000251 s  16705.3 MFLOP/s  PASS
+Working on problem size N=256 
+Blocked DGEMM 
+N=256  B=2  time=0.055149 s  608.4 MFLOP/s  PASS
+N=256  B=16  time=0.003088 s  10867.5 MFLOP/s  PASS
+N=256  B=32  time=0.002239 s  14986.0 MFLOP/s  PASS
+N=256  B=64  time=0.001784 s  18811.0 MFLOP/s  PASS
+Working on problem size N=512 
+Blocked DGEMM 
+N=512  B=2  time=0.442141 s  607.1 MFLOP/s  PASS
+N=512  B=16  time=0.024695 s  10870.1 MFLOP/s  PASS
+N=512  B=32  time=0.019145 s  14021.5 MFLOP/s  PASS
+N=512  B=64  time=0.014461 s  18562.5 MFLOP/s  PASS
+Working on problem size N=1024 
+Blocked DGEMM 
+N=1024  B=2  time=3.537705 s  607.0 MFLOP/s  PASS
+N=1024  B=16  time=0.224274 s  9575.3 MFLOP/s  PASS
+N=1024  B=32  time=0.135053 s  15901.0 MFLOP/s  PASS
+N=1024  B=64  time=0.114814 s  18704.0 MFLOP/s  PASS
+Working on problem size N=2048 
+Blocked DGEMM 
+N=2048  B=2  time=27.150693 s  632.8 MFLOP/s  PASS
+N=2048  B=16  time=1.985297 s  8653.5 MFLOP/s  PASS
+N=2048  B=32  time=1.143334 s  15026.1 MFLOP/s  PASS
+N=2048  B=64  time=0.936820 s  18338.5 MFLOP/s  PASS

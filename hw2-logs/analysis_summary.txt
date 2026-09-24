@@ -1,0 +1,101 @@
+--- basic_vs_blas.csv
+      N  Basic MM    CBLAS
+0   128    1636.9  28127.2
+1   256    1130.9  33772.2
+2   512     311.7  48139.7
+3  1024     285.6  51038.4
+4  2048     124.3  51936.5
+wrote basic_vs_blas.png
+wrote basic_vs_blas.tex
+
+  series                    min        max  max/min  range of problem sizes
+  Basic MM                124.3     1636.9     13.2x  N=128..2048
+  CBLAS                 28127.2    51936.5      1.8x  N=128..2048
+
+  % of theoretical peak (39.2 GFLOP/s):
+  series                  128      256      512     1024     2048
+  Basic MM              4.18%    2.88%    0.80%    0.73%    0.32%
+  CBLAS                71.75%   86.15%  122.81%  130.20%  132.49%
+
+  speedup of CBLAS over each series (x times faster):
+  series                  128      256      512     1024     2048
+  Basic MM               17.2     29.9    154.4    178.7    417.8
+
+  memory footprint of A+B+C vs cache (Lecture 09, slide 7):
+    N=128    A+B+C =     384.0 KiB   fits L2
+    N=256    A+B+C =    1536.0 KiB   fits L3 (per CCD)
+    N=512    A+B+C =    6144.0 KiB   fits L3 (per CCD)
+    N=1024   A+B+C =   24576.0 KiB   fits L3 (per CCD)
+    N=2048   A+B+C =   98304.0 KiB   exceeds L3
+
+--- blocked_vs_blas.csv
+      N  BMMCO B=2  BMMCO B=16  BMMCO B=32  BMMCO B=64    CBLAS
+0   128      605.2     10454.2     13834.6     16231.2  28127.2
+1   256      626.0     11013.6     14986.0     19269.4  33772.2
+2   512      628.7     10988.5     14852.0     19577.5  48139.7
+3  1024      632.5      9547.3     15928.1     18644.3  51038.4
+4  2048      632.6      8653.5     15026.1     18182.2  51936.5
+wrote blocked_vs_blas.png
+wrote blocked_vs_blas.tex
+
+  series                    min        max  max/min  range of problem sizes
+  BMMCO B=2               605.2      632.6      1.0x  N=128..2048
+  BMMCO B=16             8653.5    11013.6      1.3x  N=128..2048
+  BMMCO B=32            13834.6    15928.1      1.2x  N=128..2048
+  BMMCO B=64            16231.2    19577.5      1.2x  N=128..2048
+  CBLAS                 28127.2    51936.5      1.8x  N=128..2048
+
+  % of theoretical peak (39.2 GFLOP/s):
+  series                  128      256      512     1024     2048
+  BMMCO B=2             1.54%    1.60%    1.60%    1.61%    1.61%
+  BMMCO B=16           26.67%   28.10%   28.03%   24.36%   22.08%
+  BMMCO B=32           35.29%   38.23%   37.89%   40.63%   38.33%
+  BMMCO B=64           41.41%   49.16%   49.94%   47.56%   46.38%
+  CBLAS                71.75%   86.15%  122.81%  130.20%  132.49%
+
+  speedup of CBLAS over each series (x times faster):
+  series                  128      256      512     1024     2048
+  BMMCO B=2              46.5     53.9     76.6     80.7     82.1
+  BMMCO B=16              2.7      3.1      4.4      5.3      6.0
+  BMMCO B=32              2.0      2.3      3.2      3.2      3.5
+  BMMCO B=64              1.7      1.8      2.5      2.7      2.9
+
+  memory footprint of A+B+C vs cache (Lecture 09, slide 7):
+    N=128    A+B+C =     384.0 KiB   fits L2
+    N=256    A+B+C =    1536.0 KiB   fits L3 (per CCD)
+    N=512    A+B+C =    6144.0 KiB   fits L3 (per CCD)
+    N=1024   A+B+C =   24576.0 KiB   fits L3 (per CCD)
+    N=2048   A+B+C =   98304.0 KiB   exceeds L3
+
+--- basic_vs_blocked.csv
+      N   Basic  Blocked B=2  Blocked B=16  Blocked B=32  Blocked B=64
+0   128  1636.9        605.2       10454.2       13834.6       16231.2
+1   256  1130.9        626.0       11013.6       14986.0       19269.4
+2   512   311.7        628.7       10988.5       14852.0       19577.5
+3  1024   285.6        632.5        9547.3       15928.1       18644.3
+4  2048   124.3        632.6        8653.5       15026.1       18182.2
+wrote basic_vs_blocked.png
+wrote basic_vs_blocked.tex
+
+  series                    min        max  max/min  range of problem sizes
+  Basic                   124.3     1636.9     13.2x  N=128..2048
+  Blocked B=2             605.2      632.6      1.0x  N=128..2048
+  Blocked B=16           8653.5    11013.6      1.3x  N=128..2048
+  Blocked B=32          13834.6    15928.1      1.2x  N=128..2048
+  Blocked B=64          16231.2    19577.5      1.2x  N=128..2048
+
+  % of theoretical peak (39.2 GFLOP/s):
+  series                  128      256      512     1024     2048
+  Basic                 4.18%    2.88%    0.80%    0.73%    0.32%
+  Blocked B=2           1.54%    1.60%    1.60%    1.61%    1.61%
+  Blocked B=16         26.67%   28.10%   28.03%   24.36%   22.08%
+  Blocked B=32         35.29%   38.23%   37.89%   40.63%   38.33%
+  Blocked B=64         41.41%   49.16%   49.94%   47.56%   46.38%
+
+  memory footprint of A+B+C vs cache (Lecture 09, slide 7):
+    N=128    A+B+C =     384.0 KiB   fits L2
+    N=256    A+B+C =    1536.0 KiB   fits L3 (per CCD)
+    N=512    A+B+C =    6144.0 KiB   fits L3 (per CCD)
+    N=1024   A+B+C =   24576.0 KiB   fits L3 (per CCD)
+    N=2048   A+B+C =   98304.0 KiB   exceeds L3
+

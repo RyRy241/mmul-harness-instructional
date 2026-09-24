@@ -1,0 +1,16 @@
+Description:	Reference dgemm.
+
+Working on problem size N=64 
+N=64  time=0.000094 s  5571.5 MFLOP/s  PASS
+Working on problem size N=64 
+N=64  time=0.000013 s  38905.3 MFLOP/s  PASS
+Working on problem size N=128 
+N=128  time=0.000149 s  28127.2 MFLOP/s  PASS
+Working on problem size N=256 
+N=256  time=0.000996 s  33701.8 MFLOP/s  PASS
+Working on problem size N=512 
+N=512  time=0.005576 s  48139.7 MFLOP/s  PASS
+Working on problem size N=1024 
+N=1024  time=0.041910 s  51240.7 MFLOP/s  PASS
+Working on problem size N=2048 
+N=2048  time=0.330506 s  51980.6 MFLOP/s  PASS
