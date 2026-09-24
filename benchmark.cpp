@@ -117,12 +117,16 @@ int main(int argc, char** argv)
            double mflops  = (2.0 * n * n * n) / seconds / 1.0e6;
 
 #ifdef BLOCKED
-          printf("N=%d  B=%d  time=%.6f s  %.1f MFLOP/s  %s\n",
+           printf("N=%d  B=%d  time=%.6f s  %.1f MFLOP/s  %s\n",
                   n, b, seconds, mflops, ok ? "PASS" : "FAIL");
+#else
+           printf("N=%d  time=%.6f s  %.1f MFLOP/s  %s\n",
+                  n, seconds, mflops, ok ? "PASS" : "FAIL");
+#endif
+
+#ifdef BLOCKED
         } // end loop over block sizes
 #endif
-          printf("N=%d  time=%.6f s  %.1f MFLOP/s  %s\n",
-                  n, seconds, mflops, ok ? "PASS" : "FAIL");
 
     } // end loop over problem sizes
 
